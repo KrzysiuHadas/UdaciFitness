@@ -9,4 +9,4 @@ const UdaciSlider = () => {
     );
 };
 
-export default UdaciSlider;
+export default UdaciSlider

@@ -9,4 +9,4 @@ const UdaciSteppers = () => {
     );
 };
 
-export default UdaciSteppers;
+export default UdaciSteppers
