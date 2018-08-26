@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import { getMetricMetaInfo, timeToString } from '../utils/helpers'
+import { getMetricMetaInfo, timeToString, getDailyReminderValue } from '../utils/helpers'
 import UdaciSlider from './UdaciSlider'
 import UdaciSteppers from './UdaciSteppers'
 import DateHeader from './DateHeader'
@@ -85,7 +85,9 @@ class AddEntry extends Component {
     reset = () => {
         const key = timeToString()
 
-        // Update Redux
+        this.props.dispatch(addEntry({
+            [key]: getDailyReminderValue()
+        }))
 
         //Route to home
 
