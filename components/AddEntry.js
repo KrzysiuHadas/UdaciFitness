@@ -59,28 +59,22 @@ class AddEntry extends Component {
             [metric]: value
         }))
     }
-    submit = () => {
-        const key = timeToString()
-        const entry = this.state
+  submit = () => {
+    const key = timeToString()
+    const entry = this.state
 
-        this.props.dispatch(addEntry({
-            [key]: entry
-        }))
+    this.props.dispatch(addEntry({
+      [key]: entry
+    }))
 
-        this.setState(() => ({
-            run: 0,
-            bike: 0,
-            swim: 0,
-            sleep: 0,
-            eat: 0,
-        }))
+    this.setState(() => ({ run: 0, bike: 0, swim: 0, sleep: 0, eat: 0 }))
 
-        // Navigate to Home
+    // Navigate to home
 
-        submitEntry({ key, entry })
+    submitEntry({ key, entry })
 
-        // Clear local notification
-    }
+    // Clear local notification
+  }
 
     reset = () => {
         const key = timeToString()
@@ -143,4 +137,12 @@ class AddEntry extends Component {
     }
 }
 
-export connect()(AddEntry)
+function mapStateToProps (state) {
+    const key = timeToString()
+
+    return {
+        alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+    }
+}
+
+export default connect(mapStateToProps)(AddEntry)
