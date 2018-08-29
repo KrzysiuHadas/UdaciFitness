@@ -106,8 +106,6 @@ class AddEntry extends Component {
             )
         }
 
-        console.log("state ", this.state.bike)
-
         return (
             <View style={styles.container}>
                 <DateHeader date={(new Date()).toLocaleDateString()} />

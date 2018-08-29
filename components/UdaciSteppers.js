@@ -4,7 +4,6 @@ import { FontAwesome, white, purple, gray, Entypo } from '@expo/vector-icons'
 
 
 const UdaciSteppers = ({ max, unit, step, value, onIncrement, onDecrement }) => {
-    console.log("wszystko", value, unit);
     return (
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
             {
