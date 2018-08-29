@@ -5,7 +5,7 @@ import { purple } from '../utils/colors'
 
 const DateHeader = ({ date }) => {
     return (
-        <Text style={{color: purple, fintSize: 25}}>
+        <Text style={{color: purple, fontSize: 25}}>
             {date}
         </Text>
     );
