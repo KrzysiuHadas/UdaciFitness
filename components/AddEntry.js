@@ -106,6 +106,8 @@ class AddEntry extends Component {
             )
         }
 
+        console.log("state ", this.state.bike)
+
         return (
             <View style={styles.container}>
                 <DateHeader date={(new Date()).toLocaleDateString()} />
@@ -127,6 +129,7 @@ class AddEntry extends Component {
                                         value={value}
                                         onIncrement={() => this.increment(key)}
                                         onDecrement={() => this.decrement(key)}
+                                        {...rest}
                                     />
                             }
                         </View>
