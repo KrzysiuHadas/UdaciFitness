@@ -3,21 +3,39 @@ import { View, Text } from 'react-native'
 import { fetchCalendarResults } from '../utils/api'
 import { connect } from 'react-redux'
 import { receiveEntries, addEntry } from '../actions'
-import {timeToString, getDailyReminderValue } from '../utils/helpers'
+import { timeToString, getDailyReminderValue } from '../utils/helpers'
 
 
 class History extends Component {
-    componentDidMount() {
-        const { dispatch } = this.props
-    }
+  componentDidMount() {
+    const { dispatch } = this.props
 
-    render() {
-        return (
-            <View>
-                <Text>History</Text>
-            </View>
-        )
-    }
+    fetchCalendarResults()
+      .then((entries) => dispatch(receiveEntries(entries)))
+      .then(({ entries }) => {
+        if (!entries[timeToString()]) {
+          dispatch(addEntry({
+            [timeToString()]: getDailyReminderValue(),
+          }))
+        }
+      })
+  }
+
+  render() {
+    return (
+      <View>
+        <Text>{JSON.stringify(this.props)}</Text>
+      </View>
+    )
+  }
 }
 
-export default History;
+
+function mapStateToProps(entries) {
+  return {
+    entries
+  }
+}
+
+
+export default connect(mapStateToProps)(History)
