@@ -9,6 +9,9 @@ export default class Live extends Component {
     status: 'undetermined',
     direction: '',
   }
+  askPermission = () => {
+
+  }
 
   render() {
     const { coords, status, direction } = this.state
@@ -27,8 +30,14 @@ export default class Live extends Component {
 
     if (status === 'undetermined') {
       return (
-        <View>
-          <Text> Undetermined. </Text>
+        <View style={styles.center}>
+          <Foundation name="alert" size={50} />
+          <Text>You need to enable location services for this app.</Text>
+          <TouchableOpacity onPress={this.askPermission} style={styles.button} >
+            <Text style={styles.buttonText}>
+              Enable
+            </Text>
+          </TouchableOpacity>
         </View>
       )
     }
@@ -52,6 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 30,
     marginRight: 30,
+    alignItems: 'center',
   },
   button: {
     padding: 10,
